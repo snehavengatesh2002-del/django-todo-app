@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h2 class="title">Trash Tasks</h2>
+
+
+{% for i in data %}
+
+<div class="task-card">
+
+<h3>{{ i.title }}</h3>
+
+<p>{{ i.desc }}</p>
+
+<a href="{% url 'tdelete' i.id %}"
+class="btn delete">
+
+Delete Permanently
+
+</a>
+
+</div>
+
+{% empty %}
+
+<p class="empty-text">
+Trash is empty.
+</p>
+
+{% endfor %}
+
+{% endblock %}

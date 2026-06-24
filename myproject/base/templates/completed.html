@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h2 class="title">Completed Tasks</h2>
+
+<div class="top-buttons">
+
+<a href="{% url 'crestoreall' %}"
+class="btn restore">
+
+Restore All
+
+</a>
+
+</div>
+
+
+{% for i in data %}
+
+<div class="task-card">
+
+<h3>{{ i.title }}</h3>
+
+<p>{{ i.desc }}</p>
+
+<a href="{% url 'crestore' i.id %}"
+class="btn restore">
+
+Restore Task
+
+</a>
+
+</div>
+
+{% empty %}
+
+<p class="empty-text">
+No completed tasks yet.
+</p>
+
+{% endfor %}
+
+{% endblock %}

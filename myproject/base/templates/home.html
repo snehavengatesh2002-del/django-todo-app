@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h2 class="title">TODO LIST</h2>
+
+<div class="top-buttons">
+
+<a href="{% url 'add' %}" class="btn add">Add Task</a>
+
+<a href="{% url 'hcompleteall' %}" class="btn complete">Complete All</a>
+
+<a href="{% url 'hdeleteall' %}" class="btn delete">Delete All
+</a>
+
+</div>
+
+
+{% for i in data %}
+
+<div class="task-card">
+
+<h3>{{ i.title }}</h3>
+
+<p>{{ i.desc }}</p>
+
+<div class="actions">
+
+<a href="{% url 'update' i.id %}" class="btn update">
+Update
+</a>
+
+<a href="{% url 'hcomplete' i.id %}" class="btn complete">
+Complete
+</a>
+
+<a href="{% url 'hdelete' i.id %}" class="btn delete">
+Delete
+</a>
+
+</div>
+
+</div>
+
+{% empty %}
+
+<p class="empty-text">
+No tasks available. Add your first task.
+</p>
+
+{% endfor %}
+
+{% endblock %}
